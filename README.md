@@ -5,7 +5,9 @@
 
 1. There are 2-3 libraries that creates the project structure. `create-react-native-library` or `react-native-create-library`. I used `react-native-create-library` following [this artcle](https://medium.com/wix-engineering/creating-a-native-module-in-react-native-93bab0123e46) but some of the components may be outdated like jcenter repository or using `compile` instead of `implementation` but they are trivial things to fix. 
 
-`react-native-create-library -—platforms ios,android <projectFolder>`
+```
+react-native-create-library -—platforms ios,android <projectFolder>
+```
 2. Now there is one Java file that needs to be changed and that is the *Module.java. Where you need to put the `ReactMethod`s or the interfaces you want to expose from the library. In this case I edited a little bit the Project that you sent and added those public methods.
 
 3. If there are activities we need to register them at `AndroidManifest.xml`.
