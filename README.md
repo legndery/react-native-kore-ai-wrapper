@@ -62,4 +62,18 @@ import RNKoreAiNativeWrapper from 'react-native-kore-ai-native-wrapper';
 // TODO: What to do with the module?
 RNKoreAiNativeWrapper;
 ```
-  
+
+## iOS Null native module troubleshoot:
+### For Reference check this Commit: [910434157901dbe07fd74a4b5a7a03de767261c5](https://github.com/legndery/react-native-kore-ai-wrapper/commit/910434157901dbe07fd74a4b5a7a03de767261c5)
+- Move the Podspec file to the root.
+- Change the source_files to appropriate location. For example: `s.source_files  = "ios/*.{h,m}"`
+- Add a `homepage` attribute to the podspec file. `s.homepage = "https://github.com/"`
+- create podfile by running `cd ios && pod init` then move the `Podfile` again to root.
+- Add the below dependencies (check the existing `Podfile` to get an idea):
+```rb
+pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
+pod 'React', :path => '../node_modules/react-native'
+pod '<ur package name from package.json>', :path => '../node_modules/<ur package name from package.json>'
+```
+- now `npm pack` or tar the package and Npm install it as before in your project.
+- In your project go to `ios` directory by doin `cd ios` and do `pod install` otherwise it will not be linked.
